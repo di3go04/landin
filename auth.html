@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticación - Talento Tech</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .auth-container-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        .auth-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-weight: 600;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+        .auth-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        .auth-tab:hover:not(.active) {
+            color: var(--text-main);
+        }
+        .auth-form {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        .auth-form.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            z-index: 100;
+        }
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh"></div>
+    <a href="index.html" class="back-link">← Volver al inicio</a>
+
+    <div class="auth-container-wrapper">
+        <div class="auth-card reveal active">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="logo" style="margin-bottom: 1rem;">TALENTO <span class="gradient-text">TECH</span></div>
+                <p style="color: var(--text-muted);">Accede para participar en nuestra comunidad.</p>
+            </div>
+
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Iniciar sesión</div>
+                <div class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Registrarse</div>
+            </div>
+
+            <!-- Formularios correspondientes -->
+            <div id="form-login" class="auth-form active">
+                <form onsubmit="event.preventDefault(); window.iniciarSesion(document.getElementById('login-email').value, document.getElementById('login-password').value);">
+                    <div class="form-group">
+                        <label for="login-email">Correo Electrónico</label>
+                        <input type="email" id="login-email" required placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Contraseña</label>
+                        <input type="password" id="login-password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Iniciar sesión</button>
+                </form>
+                <div id="login-message" style="margin-top: 1rem; text-align: center; display: none; padding: 1rem; border-radius: 8px;"></div>
+            </div>
+
+            <div id="form-register" class="auth-form">
+                <form onsubmit="event.preventDefault(); window.registrarUsuario(document.getElementById('reg-email').value, document.getElementById('reg-password').value);">
+                    <div class="form-group">
+                        <label for="reg-email">Correo Electrónico</label>
+                        <input type="email" id="reg-email" required placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Contraseña</label>
+                        <input type="password" id="reg-password" minlength="6" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Registrarse</button>
+                </form>
+                <div id="register-message" style="margin-top: 1rem; text-align: center; display: none; padding: 1rem; border-radius: 8px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+    <script>
+        function switchAuthTab(tab) {
+            // Update tabs
+            document.getElementById('tab-login').classList.remove('active');
+            document.getElementById('tab-register').classList.remove('active');
+            document.getElementById(`tab-${tab}`).classList.add('active');
+
+            // Update forms
+            document.getElementById('form-login').classList.remove('active');
+            document.getElementById('form-register').classList.remove('active');
+            document.getElementById(`form-${tab}`).classList.add('active');
+            
+            // Clear messages
+            document.getElementById('login-message').style.display = 'none';
+            document.getElementById('register-message').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
