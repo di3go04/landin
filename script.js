@@ -350,4 +350,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         updateAuthUI(session?.user);
         window.obtenerComentarios();
     });
+
+    // Lógica para Preguntas Frecuentes (FAQ Accordion)
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const isActive = question.classList.contains('active');
+            
+            // Cerrar todos los demás
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.classList.remove('active');
+                if(q.nextElementSibling) q.nextElementSibling.style.maxHeight = null;
+            });
+            
+            // Abrir el clickeado si no estaba ya abierto
+            if (!isActive) {
+                question.classList.add('active');
+                if (answer) answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        });
+    });
 });
