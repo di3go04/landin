@@ -34,7 +34,7 @@
                     <li><a href="#beneficios">Beneficios</a></li>
                     <li><a href="#proceso">Proceso</a></li>
                     <li><a href="#faq">Preguntas</a></li>
-                    <li><a href="#campus">Campus</a></li>
+                    <li><a href="#campus">Campus Virtual</a></li>
                     <li id="auth-nav-item"><a href="auth.html" id="open-auth-btn" style="color: var(--secondary-color);">👤 Login</a></li>
                     <li id="profile-nav-item" style="display: none;"><a href="#" id="logout-btn">Cerrar Sesión</a></li>
                 </ul>
@@ -157,38 +157,28 @@
         </section>
 
         <!-- Benefits & Stats -->
-        <section id="beneficios" style="background: rgba(196, 152, 243, 0.02);">
+        <section id="beneficios" style="background: rgba(10, 15, 30, 0.4);">
             <div class="container">
-                <div class="grid" style="align-items: center;">
-                    <div class="reveal">
-                        <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">¿Por qué elegir <span
-                                class="gradient-text">Talento Tech</span>?</h2>
-                        <ul style="list-style: none; display: grid; gap: 1.5rem;">
-                            <li style="display: flex; gap: 1rem;">
-                                <div style="color: var(--secondary-color); font-weight: bold;">✓</div>
-                                <div><strong>Certificación Oficial:</strong> Avalada por líderes de la industria
-                                    tecnológica.</div>
-                            </li>
-                            <li style="display: flex; gap: 1rem;">
-                                <div style="color: var(--secondary-color); font-weight: bold;">✓</div>
-                                <div><strong>Mentores Expertos:</strong> Aprende de profesionales activos en grandes
-                                    empresas.</div>
-                            </li>
-                            <li style="display: flex; gap: 1rem;">
-                                <div style="color: var(--secondary-color); font-weight: bold;">✓</div>
-                                <div><strong>Bolsa de Empleo:</strong> Conexión directa con empresas en búsqueda de
-                                    talento.</div>
-                            </li>
-                        </ul>
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 style="font-size: 2.5rem;">Nuestros <span class="gradient-text">Beneficios</span></h2>
+                    <p style="color: var(--text-muted); margin-top: 1rem;">Razones para estudiar con nosotros.</p>
+                </div>
+                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                    <div class="card reveal border-gradient-cyan" style="text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🎓</div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-main);">Gratuito</h3>
                     </div>
-                    <div class="reveal"
-                        style="background: var(--accent-gradient); padding: 4rem; border-radius: 32px; text-align: center; color: black;">
-                        <h3 style="font-size: 3rem; margin-bottom: 0.5rem;">+5000</h3>
-                        <p style="font-weight: 600; font-size: 1.2rem;">Estudiantes Graduados</p>
-                        <div style="margin-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 2rem;">
-                            <p>Únete a la comunidad de tecnología más grande de la región y transforma tu futuro
-                                profesional hoy mismo.</p>
-                        </div>
+                    <div class="card reveal border-gradient-cyan" style="text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">📜</div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-main);">Certificado oficial</h3>
+                    </div>
+                    <div class="card reveal border-gradient-cyan" style="text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">💼</div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-main);">Empleabilidad</h3>
+                    </div>
+                    <div class="card reveal border-gradient-cyan" style="text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🤝</div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-main);">Networking</h3>
                     </div>
                 </div>
             </div>
@@ -201,26 +191,24 @@
                     <h2 style="font-size: 2.5rem;">Proceso de <span class="gradient-text">Inscripción</span></h2>
                     <p style="color: var(--text-muted); margin-top: 1rem;">Cuatro sencillos pasos para iniciar tu camino tech.</p>
                 </div>
-                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: center; position: relative;">
-                    <div class="reveal step-card">
+                <!-- Timeline container with cyan-violeta connecting line -->
+                <div class="grid reveal" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: center; position: relative;">
+                    <div style="position: absolute; top: 30px; left: 10%; width: 80%; height: 4px; background: linear-gradient(135deg, #00E5FF 0%, #c498f3 100%); z-index: 0; border-radius: 2px;"></div>
+                    <div class="step-card" style="position: relative; z-index: 1;">
                         <div class="step-num">1</div>
-                        <h4 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Regístrate</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Crea tu cuenta en nuestra plataforma usando tu correo electrónico oficial.</p>
+                        <h4 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Inscripción</h4>
                     </div>
-                    <div class="reveal step-card">
+                    <div class="step-card" style="position: relative; z-index: 1;">
                         <div class="step-num">2</div>
-                        <h4 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Prueba Inicial</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Realiza una prueba diagnóstica para conocer tu nivel y afianzar tu plan de estudio.</p>
-                    </div>
-                    <div class="reveal step-card">
-                        <div class="step-num">3</div>
                         <h4 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Selección</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Elige el bootcamp y la modalidad que mejor se adapte a tu estilo de vida y tiempos.</p>
                     </div>
-                    <div class="reveal step-card">
+                    <div class="step-card" style="position: relative; z-index: 1;">
+                        <div class="step-num">3</div>
+                        <h4 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Formación</h4>
+                    </div>
+                    <div class="step-card" style="position: relative; z-index: 1;">
                         <div class="step-num">4</div>
-                        <h4 style="margin-bottom: 0.5rem; font-size: 1.2rem;">¡Empieza!</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Inicia tus clases e impulsa tu perfil profesional en el sector TI de inmediato.</p>
+                        <h4 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Certificación</h4>
                     </div>
                 </div>
             </div>

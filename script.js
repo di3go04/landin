@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             const { data: comments, error } = await supabase
-                .from('comments')
+                .from('comentarios')
                 .select('*')
                 .order('created_at', { ascending: false })
                 .limit(50);
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return `
                     <div class="comment-card">
                         <div class="comment-header">
-                            <span class="comment-author">Usuario Autorizado</span>
+                            <span class="comment-author">${c.email ? c.email.split('@')[0] : 'Usuario'}</span>
                             <span class="comment-date">${fechaFormat}</span>
                         </div>
                         <p class="comment-body">${c.contenido}</p>
@@ -183,8 +183,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             const { data: sessionData } = await supabase.auth.getSession();
             if (!sessionData.session) throw new Error('Debes iniciar sesión para poder comentar.');
             
-            const { error } = await supabase.from('comments').insert([{ 
+            const { error } = await supabase.from('comentarios').insert([{ 
                 user_id: sessionData.session.user.id, 
+                email: sessionData.session.user.email,
                 contenido: contenido 
             }]);
             
@@ -356,17 +357,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
             const answer = question.nextElementSibling;
+            const item = question.closest('.faq-item');
             const isActive = question.classList.contains('active');
             
             // Cerrar todos los demás
             document.querySelectorAll('.faq-question').forEach(q => {
                 q.classList.remove('active');
+                if(q.closest('.faq-item')) q.closest('.faq-item').classList.remove('active');
                 if(q.nextElementSibling) q.nextElementSibling.style.maxHeight = null;
             });
             
             // Abrir el clickeado si no estaba ya abierto
             if (!isActive) {
                 question.classList.add('active');
+                if(item) item.classList.add('active');
                 if (answer) answer.style.maxHeight = answer.scrollHeight + "px";
             }
         });
